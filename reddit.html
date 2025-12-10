@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        *{
+            background-color: black;
+            color: white;
+            margin-top: px;
+        }
+        body{
+            height: 100vh;
+           
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: .1px solid ;
+            border-color: rgb(66, 65, 65);
+            flex-wrap:wrap;
+            padding-top: 10px;
+        }
+        
+        .img1,.img2{
+            width:35 px;
+            height: 35px;
+            margin-top: px;
+            border-radius:100% ;
+            position: relative;
+            top: px;
+            bottom: 5px; 
+        }
+        .a1{
+            position: relative;
+            bottom: 5px; 
+        }
+        .reddit-logo {
+             font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 27px;
+            display: inline-block;
+            letter-spacing: 1px;
+            color: red;
+      
+        }
+        .chat,.bell,.ad{
+            font-size: 22px;
+        }
+        .box1{
+            border-right: 1px solid ;
+            border-color: rgb(66, 65, 65);
+            margin-top: 0px;
+            height: 100vh;
+            width: 300px;
+        }
+        
+        .bell{
+            border: 1px solid ;
+            border-color: black;
+            border-radius: 60px;
+            width: 30px;
+            height: 30px;
+            color: white;
+            
+        }
+        .bell:hover,.button:hover,input:hover,.chat:hover,.ad:hover{
+            border-color: black;
+            background-color: rgb(50, 50, 50);
+            border-radius:80px ;
+
+            
+        }
+        .header3{
+            display: flex;
+            justify-content: space-between;
+        }
+        .main1{
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            display: flex;
+        }
+         
+
+        .sidebar {
+            width: 300px;
+            height: 100vh;
+            overflow-y: auto;
+            background: #111;
+            padding: px;
+            margin-left:22px;
+            z-index: 1;
+            margin-top: 12px;
+
+        }
+        .sidebar2{
+            z-index: 0;
+            overflow-y: scroll;
+            margin-left: 12px;
+            margin-top: 17px;
+        }
+        .item {
+            padding: 10px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ddd;
+        }
+
+        .item:hover {
+            background: rgb(50, 50, 50);
+        } 
+       
+        .section-title {
+            font-size: 13px;
+            opacity: 0.6;
+            margin: 20px 0 10px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .beta {
+            color: #ff5722;
+            font-size: 12px;
+            background: none;
+        }
+
+        .game-card {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: 0.2s;
+            text-decoration: none;
+            color: #ddd;
+            display: block;
+        }
+
+        .game-card:hover {
+            background: rgb(117, 19, 35);
+        }
+
+        img.sub-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .star,.bi-chevron-down {
+            margin-left: auto;
+            background: none;
+            margin-right:20px;
+        }
+        .fw-bold,.v,.text-secondary{
+            background: none;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+        .section-title{
+            margin: 0px;
+            border-top: 1px solid;
+            border-color: rgb(66, 65, 65);
+            padding: 13px;
+        }
+        
+
+        .post-card {
+        max-width: 850px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 14px;
+        background: #141414;
+        transition: background 0.25s;
+        cursor: pointer;
+    }
+
+
+    .post-card:hover {
+        background: #1a1a1a;
+    }
+
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: none;
+    }
+
+    .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .username {
+        font-weight: 700;
+        font-size: 15px;
+        background: none;
+    }
+
+    .meta {
+        font-size: 13px;
+        color: #9aa0a6;
+        background: none;
+    }
+
+    .dots {
+        margin-left: auto;
+        font-size: 16px;
+        color: #9aa0a6;
+        cursor: pointer;
+        background: none;
+    }
+
+
+    .post-title {
+        margin-top: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.25;
+        background: none;
+    }
+
+
+    .post-body {
+        margin-top: 12px;
+        color: #c8c8c8;
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+
+    .tag {
+        display: inline-block;
+        margin-top: 15px;
+        background: #e8b100;
+        color: black;
+        padding: 6px 14px;
+        border-radius: 16px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        margin-top: 20px;
+        color: #9aa0a6;
+        background: none;
+    }
+
+    .actions div {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 16px;
+    }
+
+    .actions i {
+        font-size: 20px;
+    }
+    .v ,.post-body{
+        background: none;
+    }
+     .video-title1,.media-box{
+        background: none;
+    } 
+    a{
+        text-decoration: none;
+    }
+
+    </style>
+</head>
+<body>
+   <header >
+    <div>
+            
+        <span><img src="logo.png" alt="" height="300px" class="img1"></span>
+        <span class="reddit-logo">reddit</span>
+    </div>
+    <div>
+        <input type="text" placeholder="Search Reddit" style="border-radius: 15px; height: 35px; border-color: rgb(61, 60, 60); width: 450px;" maxlength="128" value="">
+    </div>
+    <div class="header3">
+            <a href="https://ads.reddit.com/"><i class=" bi-badge-ad ad"></i></a>&nbsp&nbsp&nbsp &nbsp 
+            <i class=" bi-chat-dots  chat" ></i>&nbsp&nbsp&nbsp &nbsp 
+            <a class="a1" href="https://www.reddit.com/submit?type=TEXT"><button class="button btn-btn-dark" style="border-radius: 20px; width: 100px; height: 35px; " ><i class=" bi-plus-square "></i>&nbsp&nbsp&nbsp &nbspcreate</button></a>&nbsp&nbsp&nbsp &nbsp 
+            <a class=" bi-bell bell"></a>&nbsp&nbsp&nbsp &nbsp 
+            <img src="https://preview.redd.it/snoovatar/avatars/b57c9813-9c35-450e-acfd-169174db4656-headshot.png?width=128&height=128&crop=smart&auto=webp&s=a0a1289b80b099f8d32167233c37b39cb64711f4" alt="" class="img2">
+    </div>
+   </header>
+<main class="main1">
+  <div class="sidebar">
+    <div class="section">
+        <a href="reddit.html"><div class="item bi bi-house"> Home</div></a>
+        <a href="https://www.reddit.com/r/popular/"><div class="item bi bi-graph-up"> Popular</div></a>
+        <a></a><div class="item bi bi-chat-dots"> Answers <span class="beta">BETA</span></div>
+        <div class="item bi bi-people"> Explore</div>
+        <div class="item bi bi-bar-chart"> All</div>
+        <div class="item bi bi-plus-circle"> Start a community</div>
+    </div>
+    <div class="section">
+        <div class="section-title" data-bs-toggle="collapse" href="#gamesSection">
+            GAMES ON REDDIT
+            <span class="bi bi-chevron-down"></span>
+        </div>
+        <div class="collapse show" id="gamesSection">
+            <a href="" class="game-card">
+                <div class="fw-bold">Hot and Cold</div>
+                <div class="v">Guess the secret word</div>
+                <div class="text-secondary">3.4M monthly players</div>
+            </a>
+            <a href="https://www.reddit.com/r/PlaySpies/comments/1peqbs6/operation_vibrant_falcon/?entry_point=games_drawer_personalized_game" class="item">🐮 Farm Merge Valley</a>
+            <a href="" class="item">🐱 Jump Cat</a>
+            <a href="" class="item">🌸 Ninigram</a>
+            <a href="" class="item">🎮 Discover More Games</a>
+
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-title" data-bs-toggle="collapse" href="#moderationSection">
+            MODERATION
+            <span class="bi bi-chevron-down"></span>
+        </div>
+        <div class="collapse show" id="moderationSection">
+            <a href="" class="item bi bi-inbox"> Mod Queue</a>
+            <a href="" class="item bi bi-envelope"></span> Mod Mail</a>
+            <a href="" class="item bi bi-shield-lock"></span> r/Mod</a>
+            <a href="" class="item bi bi-gear"></span> Manage</a>
+            <a href="" class="item">
+                <img class="sub-icon" src="image11.png" alt="">
+                r/Bharat_affairs
+                <span class="bi bi-star star"></span>
+            </a>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-title" data-bs-toggle="collapse" href="#customFeedSection">
+            CUSTOM FEEDS
+            <span class="bi bi-chevron-down"></span>
+        </div>
+        <div class="collapse show" id="customFeedSection">
+            <a href="" class="item bi bi-plus-lg"> Create Custom Feed</a>
+        </div>
+    </div>
+    <div class="section">
+
+        <div class="section-title" data-bs-toggle="collapse" href="#communitySection">
+            COMMUNITIES
+            <span class="bi bi-chevron-down"></span>
+        </div>
+
+        <div class="collapse show" id="communitySection">
+
+            <a href="" class="item bi bi-gear"></span> Manage Communities</a>
+
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image12.png" alt="">
+                r/Bharat_affairs
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image13.png" alt="">
+                r/3Dprinting
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image14.png" alt="">
+                r/AMA
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image15.png" alt="">
+                r/BambuLab
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image16.png" alt="">
+                r/Bitsatards
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image16.png" alt="">
+                r/BITSPilani
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image17.png" alt="">
+                r/bugs
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image18.png" alt="">
+                r/careeradvice
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image19.png" alt="">
+                r/desitravellers
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image20.png" alt="">
+                r/developersIndia
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image21.png" alt="">
+                r/FixMyPrint
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image8.png" alt="">
+                r/functionalprint
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image1.png" alt="">
+                r/gamedev
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image12.png" alt="">
+                r/GATEtard
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image8.png" alt="">
+                r/IncredibleIndia
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image6.png" alt="">
+                r/india
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image.png" alt="">
+                r/india_tourism
+                <span class="bi bi-star star"></span>
+            </a>
+
+            <a href="" class="item">
+                <img class="sub-icon" src="image4.png" alt="">
+                r/indiameme
+                <span class="bi bi-star star"></span>
+            </a>
+        </div>
+    </div>
+
+ </div>
+ <div class="sidebar2">
+    <div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image10.png" class="avatar">
+        <strong class="username">r/IndiaMemes</strong>
+        <span class="meta">• 6 hr. ago</span>
+        <span class="dots"><i class="dots bi bi-three-dots"></i></span>
+    </div>
+    
+
+
+    <h6 class="post-title">
+        0 PR, 100% Respect Remembering Dr. Manmohan Singh on his birth anniversary 🇮🇳📣
+    </h5>
+
+
+    <div class="video-wrapper">
+        <video width="100%" style="height: 400px;" controls autoplay src="pm.mp4">
+
+        </video>
+    </div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">3</div>
+        <div class="v bi bi-chat">9</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+</div>
+<hr>
+<div class="post-card">
+    <div class="post-header">
+        <img src="image.png" class="avatar" alt="">
+        <div class="v">
+            <div class="username"> r/microos</div>
+            <div class="meta">• 5 days ago <br>• Suggested for you</div>
+        </div>
+        <button class="btn btn-danger btn-sm join-btn">Join</button>
+
+        <div class="text-secondary" >
+            <i class="dots bi bi-three-dots"></i>            
+        </div>
+    </div>
+    <div class="media-box">
+       <strong> <div class="video-title1">
+            📣 We are outnumbered and helpless,<br>
+            we need your help!!!
+        </div ></strong>
+
+        <img src="s1.png" width="100%" style="height: 620px;" alt="Post Image">
+    </div>
+    <div class="actions">
+        <div class="v bi bi-arrow-up">27</div>
+        <div class="v bi bi-chat">14</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+</div> <hr>
+<div class="post-card">
+    <div class="post-header">
+        <img src="image1.png" class="avatar" alt="">
+        <div class="v">
+            <div class="username">u/getToTheChopin</div>
+            <div class="meta">• 13 days ago <br>• Suggested for you</div>
+        </div>
+        <button class="btn btn-danger btn-sm join-btn">Join</button>
+        <div class="text-secondary" style="cursor:pointer;">
+            <i class="dots bi bi-three-dots"></i>
+        </div>
+    </div>
+
+    
+
+    <div class="media-box">
+        <strong> <div class="video-title1">
+            Saunter, Walk Instead, Pled! Olly Moss plays with words and shapes.
+        </div ></strong>
+
+        <img src="map.jpg" width="100%" style="height: 800px;" alt="Post Image">
+    </div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">27</div>
+        <div class="v bi bi-chat">14</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+
+</div> <hr>
+<div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image2.png" class="avatar">
+        <strong class="username">r/devops</strong>
+        <span class="meta">• 20 hr. ago</span>
+        <span class="dots"><i class="dots bi bi-three-dots"></i></span>
+    </div>
+    
+
+
+    <h5 class="post-title">
+       I'm experimenting with a Jarvis HUD interface in the browser
+
+    </h5>
+
+
+    <div class="video-wrapper">
+        <video width="100%" style="height: 400px;" controls src="rapidsave.mp4">
+
+        </video>
+    </div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">308</div>
+        <div class="v bi bi-chat">43</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+</div>
+<hr>
+    <div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image3.png" class="avatar" alt="">
+        <div class="v" >
+            <div class="username">u/Afraid-Task-1023</div>
+            <div class="meta">• 9 hr. ago</div>
+        </div>
+        <div class="dots bi bi-three-dots"></div>
+    </div>
+
+
+    <div class="post-title">
+        What illustration or graphic styles are most worth learning for someone breaking into Web/UI design?
+    </div>
+
+
+    <div class="post-body">
+        I know web design and UI/UX aren't just about Figma, wireframing, or prototyping.
+        I've noticed that many top designers in tech also create custom illustrations and
+        graphics that elevate a brand's overall look. I'm trying to figure out which illustration
+        or graphic styles are actually valuable in the current industry. If I want to level up
+        my skills using Procreate or Adobe Illustrator, what specific styles should I focus on
+        that are most in-demand or commonly used in modern web design and branding?
+        Would love to hear from designers/marketers — what do you find yourself creating most…
+    </div>
+
+
+    <div class="tag">Asking Question (Rule 4)</div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">233</div>
+        <div class="v bi bi-chat">92</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+    
+</div>
+<hr>
+<div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image4.png" class="avatar">
+        <strong class="username">r/Gaming</strong>
+        <span class="meta">•  12days . ago</span>
+        <span class="dots"><i class="dots bi bi-three-dots"></i></span>
+    </div>
+    
+
+
+    <h6 class="post-title">
+         Go on Game to Save natue  🌳
+    </h5>
+
+
+    <div class="video-wrapper">
+        <video width="100%" style="height: 400px;" controls src="nature.mp4">
+
+        </video>
+    </div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">3324</div>
+        <div class="v bi bi-chat">43</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+</div>
+<hr>
+<div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image5.png" class="avatar" alt="">
+        <div class="v" >
+            <div class="username">r/Futurology</div>
+            <div class="meta">• 1 year. ago <br>&nbsp &nbspCocoEssencee</div>
+        </div>
+        <div class="dots bi bi-three-dots"></div>
+    </div>
+
+
+    <div class="post-title">
+        What futuristic technology do you think we might already have but is being kept hidden from the public?
+    </div>
+    
+
+    <div class="post-body">
+        Discussion
+        I've been thinking a lot lately about how much technology has advanced in the last few years, and it got me wondering: what if there are some incredible technologies out there that we don't even know about yet? Like, what if governments or private companies have developed something game-changing but are keeping it under wraps for now?
+
+        Maybe it's some next-level AI, a new energy source, or a medical breakthrough that could totally change our lives. I'm curious—do you think there's tech like this that's already been created but is being kept secret for some reason? And if so, why do you think it's not out in the open yet?
+
+        Would love to hear your thoughts on this! Whether it's just a gut feeling, a wild theory, or something you've read about, let's discuss!
+    </div>
+
+
+    <div class="tag">Asking Question (Rule 4)</div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">3</div>
+        <div class="v bi bi-chat">9</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+    
+</div>
+<hr>
+<div class="post-card">
+    <div class="post-header">
+        <img src="image6.png" class="avatar" alt="">
+        <div class="v">
+            <div class="username"> r/microos</div>
+            <div class="meta">• 5 days ago <br>• Suggested for you</div>
+        </div>
+
+        <button class="btn btn-danger btn-sm join-btn">Join</button>
+
+        <div class="text-secondary" >
+            <i class="dots bi bi-three-dots"></i>
+            
+        </div>
+    </div>
+
+    
+
+    <div class="media-box">
+       <strong> <div class="video-title1">
+            📣 AI is very useful n?!!!
+        </div ></strong>
+
+        <img src="git.png" width="100%" style="height: 400px;" alt="Post Image">
+    </div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">27</div>
+        <div class="v bi bi-chat">14</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+
+</div> <hr>
+<div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image7.png" class="avatar" alt="">
+        <div class="v">
+            <div class="username">u/deaddev</div>
+            <div class="meta">• 1 month ago <br>• Suggested for you</div>
+        </div>
+
+        <button class="btn btn-danger btn-sm join-btn">Join</button>
+
+        <div class="text-secondary" style="cursor:pointer;">
+            <i class="dots bi bi-three-dots"></i>
+        </div>
+    </div>
+
+    
+
+    <div class="media-box">
+        <strong> <div class="video-title1">
+            Reality can't be denied.
+        </div ></strong>
+
+        <img src="mul.png" width="100%" style="height: 450px;" alt="Post Image">
+    </div>
+
+
+    <div class="actions">
+        <div class="v bi bi-arrow-up">27</div>
+        <div class="v bi bi-chat">14</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+
+</div> <hr>
+<div class="post-card">
+
+
+    <div class="post-header">
+        <img src="image8.png" class="avatar" alt="">
+        <div class="v" >
+            <div class="username">r/Layoffs</div>
+            <div class="meta">•
+9mo ago <br>&nbsp &nbspOne_Assist_0987</div>
+        </div>
+        <div class="dots bi bi-three-dots"></div>
+    </div>
+
+
+    <div class="post-title">
+        What futuristic technology do you think we might already have but is being kept hidden from the public?
+    </div>
+    
+
+    <div class="post-body">
+        1. After speaking with friends at Microsoft, Meta, and Amazon across London, Bangalore, and Seattle, here are the hard truths about the current job market:
+        <br>
+        2. Job security in Big Tech is a thing of the past. The days when working for top tech companies meant long-term stability are over.
+        <br>
+        3. AI is reshaping the workforce. Automation and AI-driven tools are boosting efficiency across organizations, making several roles redundant.
+        <br>
+        4. Mid-career professionals face the biggest challenge. People in their late 30s and early 40s are at a crossroads, too senior for entry-level jobs but not yet in executive roles, leaving them particularly vulnerable.
+        <br>
+        5. The layoffs have just begun. Companies are not only letting people go but also permanently eliminating roles, with no plans to rehire.
+        <br>
+        6. Amazon's workforce reductions are more aggressive. While the company used to trim around around 7-8% of employees annually due to performance reviews, that number has now surged into double digits.
+         <br>
+        7. Companies are prioritizing cost-cutting over compassion. Layoffs are being carried out with ruthless efficiency, with little regard for employee well-being.
+        <br>
+        8. India's job market is relatively more stable. While global tech hubs like London, the Bay Area, and Dubai are seeing severe slowdowns, India's employment landscape remains slightly more resilient.
+        <br><br>
+        Feel free to add if you find something new.
+    </div>
+    <div class="tag">Asking Question (Rule 4)</div>
+    <div class="actions">
+        <div class="v bi bi-arrow-up">3</div>
+        <div class="v bi bi-chat">9</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+    
+</div>
+<hr>
+<div class="post-card">
+    <div class="post-header">
+        <img src="image9.png" class="avatar">
+        <strong class="username">r/Army</strong>
+        <span class="meta">• 23 hr. ago</span>
+        <span class="dots"><i class="dots bi bi-three-dots"></i></span>
+    </div>
+    <h6 class="post-title">
+        
+    </h5>
+    <div class="video-wrapper">
+        <video width="100%" style="height: 400px;" controls src="Rashtriya.mp4">
+        </video>
+    </div>
+    <div class="actions">
+        <div class="v bi bi-arrow-up">3434</div>
+        <div class="v bi bi-chat">124</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+</div>
+<hr>
+<div class="post-card">
+    <div class="post-header">
+        <img src="https://www.redditstatic.com/avatars/defaults/v2/avatar_default_2.png" class="avatar">
+        <strong class="username">r/shayari</strong>
+        <span class="meta">• 16 hr. ago</span>
+        <span class="dots"><i class="dots bi bi-three-dots"></i></span>
+    </div>
+    <h6 class="post-title">
+        Har ek ke ham pasand thehre by Akeel Nomani sir
+    </h5>
+    <div class="video-wrapper">
+        <video width="100%" style="height: 400px;" controls src="shayari.mp4">
+        </video>
+    </div>
+    <div class="actions">
+        <div class="v bi bi-arrow-up">2323</div>
+        <div class="v bi bi-chat">44</div>
+        <div class="v bi bi-award"></div>
+        <div class="v bi bi-share">Share</div>
+    </div>
+
+</div>
+<hr>
+ </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+document.querySelectorAll(".section-title").forEach(title => {
+    title.addEventListener("click", () => {
+        const arrow = title.querySelector("span");
+        arrow.classList.toggle("rotate");
+    });
+});
+</script>
+</body>
+</html>
